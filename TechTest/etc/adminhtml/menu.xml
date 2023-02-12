@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="PinPoint_TechTest::logo" title="Logos" module="PinPoint_TechTest" sortOrder="100" resource="PinPoint_TechTest::logo"/>
+    </menu>
+</config>
