@@ -1,6 +1,6 @@
 <?php
 
-namespace PinPoint\TechTest\Block\Adminhtml\Logo;
+namespace PinPoint\TechTest\Block\Adminhtml\Category;
 
 class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
 {
@@ -10,9 +10,9 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     protected $moduleManager;
 
     /**
-     * @var \PinPoint\TechTest\Model\logoFactory
+     * @var \PinPoint\TechTest\Model\categoryFactory
      */
-    protected $_logoFactory;
+    protected $_categoryFactory;
 
     /**
      * @var \PinPoint\TechTest\Model\Status
@@ -22,7 +22,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     /**
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Backend\Helper\Data $backendHelper
-     * @param \PinPoint\TechTest\Model\logoFactory $logoFactory
+     * @param \PinPoint\TechTest\Model\categoryFactory $categoryFactory
      * @param \PinPoint\TechTest\Model\Status $status
      * @param \Magento\Framework\Module\Manager $moduleManager
      * @param array $data
@@ -32,12 +32,12 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Backend\Helper\Data $backendHelper,
-        \PinPoint\TechTest\Model\LogoFactory $LogoFactory,
-        \PinPoint\TechTest\Model\Source\Status $status,
+        \PinPoint\TechTest\Model\CategoryFactory $CategoryFactory,
+        \PinPoint\TechTest\Model\Status $status,
         \Magento\Framework\Module\Manager $moduleManager,
         array $data = []
     ) {
-        $this->_logoFactory = $LogoFactory;
+        $this->_categoryFactory = $CategoryFactory;
         $this->_status = $status;
         $this->moduleManager = $moduleManager;
         parent::__construct($context, $backendHelper, $data);
@@ -62,7 +62,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
      */
     protected function _prepareCollection()
     {
-        $collection = $this->_logoFactory->create()->getCollection();
+        $collection = $this->_categoryFactory->create()->getCollection();
         $this->setCollection($collection);
 
         parent::_prepareCollection();
@@ -87,42 +87,15 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
             ]
         );
 
+
+
         $this->addColumn(
-            'title',
+            'cat_name',
             [
                 'header' => __('Name'),
-                'index' => 'title',
+                'index' => 'cat_name',
             ]
         );
-
-        $this->addColumn(
-            'alt_text',
-            [
-                'header' => __('Alt text'),
-                'index' => 'alt_text',
-            ]
-        );
-
-
-
-        $this->addColumn(
-            'desktop_logo_image',
-            [
-                'header' => __('Desktop logo image'),
-                'index' => 'desktop_logo_image',
-                'renderer'  => '\PinPoint\TechTest\Block\Adminhtml\Logo\Grid\Renderer\Image',
-            ]
-        );
-
-        $this->addColumn(
-            'mobile_logo_image',
-            [
-                'header' => __('Mobile logo image'),
-                'index' => 'mobile_logo_image',
-                'renderer'  => '\PinPoint\TechTest\Block\Adminhtml\Logo\Grid\Renderer\Image',
-            ]
-        );
-
 
         $this->addColumn(
             'date_added',
@@ -131,6 +104,32 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'index' => 'date_added',
             ]
         );
+
+
+
+
+        //$this->addColumn(
+        //'edit',
+        //[
+        //'header' => __('Edit'),
+        //'type' => 'action',
+        //'getter' => 'getId',
+        //'actions' => [
+        //[
+        //'caption' => __('Edit'),
+        //'url' => [
+        //'base' => '*/*/edit'
+        //],
+        //'field' => 'id'
+        //]
+        //],
+        //'filter' => false,
+        //'sortable' => false,
+        //'index' => 'stores',
+        //'header_css_class' => 'col-action',
+        //'column_css_class' => 'col-action'
+        //]
+        //);
 
 
 
@@ -153,8 +152,8 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     {
 
         $this->setMassactionIdField('id');
-        //$this->getMassactionBlock()->setTemplate('PinPoint_TechTest::logo/grid/massaction_extended.phtml');
-        $this->getMassactionBlock()->setFormFieldName('logo');
+        //$this->getMassactionBlock()->setTemplate('PinPoint_TechTest::category/grid/massaction_extended.phtml');
+        $this->getMassactionBlock()->setFormFieldName('category');
 
         $this->getMassactionBlock()->addItem(
             'delete',
@@ -198,7 +197,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     }
 
     /**
-     * @param \PinPoint\TechTest\Model\logo|\Magento\Framework\Object $row
+     * @param \PinPoint\TechTest\Model\category|\Magento\Framework\Object $row
      * @return string
      */
     public function getRowUrl($row)

@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
     <menu>
-        <add id="PinPoint_TechTest::logo" title="Logos" module="PinPoint_TechTest" sortOrder="100" resource="PinPoint_TechTest::logo"/>
+        <add id="PinPoint_TechTest::parent" title="Logo Manager" module="PinPoint_TechTest" sortOrder="100" parent="Magento_Backend::content" resource="PinPoint_TechTest::parent"/>
+        <!-- <add id="PinPoint_TechTest::index" title="TechTest Index" module="PinPoint_TechTest" sortOrder="10" action="techtest/index" resource="PinPoint_TechTest::index" parent="PinPoint_TechTest::parent"/> -->
+		<add id="PinPoint_TechTest::category" title="Manage Category" module="PinPoint_TechTest" sortOrder="20" parent="PinPoint_TechTest::parent" action="techtest/category" resource="PinPoint_TechTest::category"/>
+        <add id="PinPoint_TechTest::logo" title="Manage Logos" module="PinPoint_TechTest" sortOrder="30" parent="PinPoint_TechTest::parent" action="techtest/logo" resource="PinPoint_TechTest::logo"/>
+
+
     </menu>
 </config>

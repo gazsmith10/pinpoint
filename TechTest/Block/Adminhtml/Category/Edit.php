@@ -1,6 +1,6 @@
 <?php
 
-namespace PinPoint\TechTest\Block\Adminhtml\Logo;
+namespace PinPoint\TechTest\Block\Adminhtml\Category;
 
 class Edit extends \Magento\Backend\Block\Widget\Form\Container
 {
@@ -26,7 +26,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
     }
 
     /**
-     * Initialize logo edit block
+     * Initialize category edit block
      *
      * @return void
      */
@@ -34,11 +34,11 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
     {
         $this->_objectId = 'id';
         $this->_blockGroup = 'PinPoint_TechTest';
-        $this->_controller = 'adminhtml_logo';
+        $this->_controller = 'adminhtml_category';
 
         parent::_construct();
 
-        $this->buttonList->update('save', 'label', __('Save Logo'));
+        $this->buttonList->update('save', 'label', __('Save Category'));
         $this->buttonList->add(
             'saveandcontinue',
             [
@@ -53,7 +53,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
             -100
         );
 
-        $this->buttonList->update('delete', 'label', __('Delete Logo'));
+        $this->buttonList->update('delete', 'label', __('Delete Category'));
     }
 
     /**
@@ -63,10 +63,10 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
      */
     public function getHeaderText()
     {
-        if ($this->_coreRegistry->registry('logo')->getId()) {
-            return __("Edit Logo '%1'", $this->escapeHtml($this->_coreRegistry->registry('logo')->getTitle()));
+        if ($this->_coreRegistry->registry('category')->getId()) {
+            return __("Edit Category '%1'", $this->escapeHtml($this->_coreRegistry->registry('category')->getTitle()));
         } else {
-            return __('New Logo');
+            return __('New Category');
         }
     }
 

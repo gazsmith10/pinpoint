@@ -1,6 +1,6 @@
 <?php
 
-namespace PinPoint\TechTest\Model\ResourceModel\Logo;
+namespace PinPoint\TechTest\Model\ResourceModel\Category;
 
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
@@ -12,7 +12,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     protected function _construct()
     {
-        $this->_init('PinPoint\TechTest\Model\Logo', 'PinPoint\TechTest\Model\ResourceModel\Logo');
+        $this->_init('PinPoint\TechTest\Model\Category', 'PinPoint\TechTest\Model\ResourceModel\Category');
         $this->_map['fields']['page_id'] = 'main_table.page_id';
     }
 

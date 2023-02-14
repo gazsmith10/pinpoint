@@ -1,7 +1,8 @@
 <?php
+
 namespace PinPoint\TechTest\Model\ResourceModel;
 
-class Logo extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
+class Category extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
     /**
      * Initialize resource model
@@ -10,7 +11,6 @@ class Logo extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('pinpoint_techtest', 'id');
+        $this->_init('pinpoint_techtest_category', 'id');
     }
 }
-?>

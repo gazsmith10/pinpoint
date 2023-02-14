@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+
+		 <widget class="PinPoint\TechTest\Block\Widget\Brandlogoslider" id="pinpoint_techtest_brandlogoslider">
+		<label>Brand logoslider</label>
+		<description>Brand logoslider Description</description>
+		
+		<parameters>
+			<parameter name="category" sort_order="10" source_model="PinPoint\TechTest\Model\Source\Category" visible="true" xsi:type="multiselect">
+				<label>category</label>
+			</parameter>
+			<parameter name="sort_by" sort_order="30" source_model="PinPoint\TechTest\Model\Source\Sortby" visible="true" xsi:type="select">
+				<label>Sort by</label>
+			</parameter>
+			
+		</parameters>
+		
+		</widget>
+	
+</widgets>
+

@@ -118,16 +118,67 @@ class InstallSchema implements InstallSchemaInterface
                     [
                         'nullable' => false,
                         'default' => \Magento\Framework\DB\Ddl\Table::TIMESTAMP_INIT
-                ],
-                'Date Added'
-            )
-            ->setComment('PinPoint TechTest Table');
+                    ],
+                    'Date Added'
+                )
+                ->setComment('PinPoint TechTest Table');
 
-        $installer->getConnection()->createTable($table);
+            $installer->getConnection()->createTable($table);
+        }
+		
+		
+		 $tableNamecat = $installer->getTable('pinpoint_techtest_category');
+
+        if ($installer->getConnection()->isTableExists($tableNamecat) != true) {
+            $table = $installer->getConnection()
+                ->newTable($tableNamecat)
+                ->addColumn(
+                    'id',
+                    Table::TYPE_INTEGER,
+                    null,
+                    [
+                        'identity' => true,
+                        'unsigned' => true,
+                        'nullable' => false,
+                        'primary' => true
+                    ],
+                    'ID'
+                )
+                ->addColumn(
+                    'cat_name',
+                    Table::TYPE_TEXT,
+                    255,
+                    [
+                        'nullable' => false,
+                    ],
+                    'Category name'
+                )
+               
+                ->addColumn(
+                    'enabled',
+                    Table::TYPE_SMALLINT,
+                    null,
+                    [
+                        'nullable' => false,
+                        'default' => '0'
+                    ],
+                    'Enabled'
+                )
+                ->addColumn(
+                    'date_added',
+                    Table::TYPE_TIMESTAMP,
+                    null,
+                    [
+                        'nullable' => false,
+                        'default' => \Magento\Framework\DB\Ddl\Table::TIMESTAMP_INIT
+                    ],
+                    'Date Added'
+                )
+                ->setComment('PinPoint TechTest Category Table');
+
+            $installer->getConnection()->createTable($table);
+        }
+
+        $installer->endSetup();
     }
-
-    $installer->endSetup();
 }
-}
-
-                       
