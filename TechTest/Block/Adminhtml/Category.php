@@ -27,7 +27,7 @@ class Category extends \Magento\Backend\Block\Widget\Container
     {
 
 
-        /*  $addButtonProps = [
+        $addButtonProps = [
             'id' => 'add_new',
             'label' => __('Add New'),
             'class' => 'add',
@@ -36,12 +36,12 @@ class Category extends \Magento\Backend\Block\Widget\Container
             'options' => $this->_getAddButtonOptions(),
         ];
         $this->buttonList->add('add_new', $addButtonProps);
-		
+
 
         $this->setChild(
             'grid',
             $this->getLayout()->createBlock('PinPoint\TechTest\Block\Adminhtml\Category\Grid', 'pinpoint.category.grid')
-        );*/
+        );
         return parent::_prepareLayout();
     }
 
